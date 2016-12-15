@@ -2,12 +2,12 @@ body {
   margin-top: 75px;
   height: 100%;
 }
-*[id]:before { 
-  display: block; 
-  content: " "; 
-  margin-top: -75px; 
-  height: 75px; 
-  visibility: hidden; 
+*[id]:before {
+  display: block;
+  content: " ";
+  margin-top: -75px;
+  height: 75px;
+  visibility: hidden;
 }
 .navbar-inverse {
   background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
@@ -17,6 +17,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
+}
+.container table,.container tr, .container th,.container td {
+  border-style: solid;
+  border-width: 1px;
+  padding: 0 3px;
 }
 @media (min-width: 768px) {
   .navbar-nav.navbar-right:last-child {
