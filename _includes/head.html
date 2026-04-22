@@ -1,0 +1,10 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{{ page.title | default: site.title }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="/bootstrap.min.css" rel="stylesheet">
+	<link href="/site.css" rel="stylesheet">
+	{% if page.extra_head %}
+	{{ page.extra_head }}
+	{% endif %}
+</head>
