@@ -1,7 +1,158 @@
+/* ==========================================================================
+   CSS Custom Properties — Light / Dark colour scheme
+   ==========================================================================
+   Palette variables define raw colour values.  Semantic variables map those
+   values to UI roles (backgrounds, text, borders, etc.).  The dark-mode
+   media query overrides only the semantic variables, keeping a single set
+   of style rules.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* --- Palette ---------------------------------------------------------- */
+  --grey-100: #f5f5f5;
+  --grey-200: #e5e5e5;
+  --grey-300: #d4d4d4;
+  --grey-400: #a3a3a3;
+  --grey-500: #737373;
+  --grey-600: #525252;
+  --grey-700: #404040;
+  --grey-800: #262626;
+  --grey-850: #1c1c1c;
+  --grey-900: #171717;
+
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #337ab7;
+  --blue-600: #23527c;
+
+  --pink-50:  #f9f2f4;
+  --pink-300: #f472b6;
+  --pink-400: #c7254e;
+
+  /* --- Semantic --------------------------------------------------------- */
+  --body-bg:             #fff;
+  --body-colour:         #333;
+  --text-muted-colour:   #777;
+
+  --link-colour:         var(--blue-500);
+  --link-hover-colour:   var(--blue-600);
+
+  --border-colour:       #ddd;
+  --border-light-colour: #eee;
+  --subtle-bg:           #f9f9f9;
+
+  --code-bg:             var(--pink-50);
+  --code-colour:         var(--pink-400);
+  --pre-bg:              var(--grey-100);
+  --pre-colour:          #333;
+  --pre-border-colour:   #ccc;
+  --kbd-bg:              #333;
+  --kbd-colour:          #fff;
+  --mark-bg:             #fcf8e3;
+  --mark-colour:         var(--body-colour);
+
+  --table-border-colour:       #ddd;
+  --page-header-border-colour: var(--border-light-colour);
+  --hr-border-colour:          var(--border-light-colour);
+  --blockquote-border-colour:  var(--border-light-colour);
+
+  --dropdown-bg:             #fff;
+  --dropdown-border-colour:  rgba(0, 0, 0, 0.15);
+  --dropdown-link-colour:    #333;
+  --dropdown-link-hover-bg:  var(--grey-100);
+  --dropdown-divider-colour: #e5e5e5;
+
+  --well-bg:             var(--grey-100);
+  --well-border-colour:  #e3e3e3;
+
+  --panel-bg:            #fff;
+  --panel-border-colour: #ddd;
+  --panel-heading-bg:    var(--grey-100);
+
+  --list-group-bg:            #fff;
+  --list-group-border-colour: #ddd;
+
+  --input-bg:            #fff;
+  --input-colour:        #555;
+  --input-border-colour: #ccc;
+
+  --modal-bg:            #fff;
+  --modal-border-colour: rgba(0, 0, 0, 0.2);
+
+  --close-colour:        #000;
+  --close-shadow:        0 1px 0 #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg:             var(--grey-900);
+    --body-colour:         var(--grey-300);
+    --text-muted-colour:   var(--grey-400);
+
+    --link-colour:         var(--blue-400);
+    --link-hover-colour:   var(--blue-300);
+
+    --border-colour:       var(--grey-700);
+    --border-light-colour: var(--grey-800);
+    --subtle-bg:           var(--grey-800);
+
+    --code-bg:             var(--grey-800);
+    --code-colour:         var(--pink-300);
+    --pre-bg:              var(--grey-800);
+    --pre-colour:          var(--grey-300);
+    --pre-border-colour:   var(--grey-700);
+    --kbd-bg:              var(--grey-800);
+    --kbd-colour:          var(--grey-200);
+    --mark-bg:             #5c5103;
+    --mark-colour:         var(--grey-200);
+
+    --table-border-colour:       var(--grey-700);
+    --page-header-border-colour: var(--grey-800);
+    --hr-border-colour:          var(--grey-800);
+    --blockquote-border-colour:  var(--grey-700);
+
+    --dropdown-bg:             var(--grey-800);
+    --dropdown-border-colour:  rgba(255, 255, 255, 0.15);
+    --dropdown-link-colour:    var(--grey-300);
+    --dropdown-link-hover-bg:  var(--grey-700);
+    --dropdown-divider-colour: var(--grey-700);
+
+    --well-bg:             var(--grey-800);
+    --well-border-colour:  var(--grey-700);
+
+    --panel-bg:            var(--grey-850);
+    --panel-border-colour: var(--grey-700);
+    --panel-heading-bg:    var(--grey-800);
+
+    --list-group-bg:            var(--grey-850);
+    --list-group-border-colour: var(--grey-700);
+
+    --input-bg:            var(--grey-800);
+    --input-colour:        var(--grey-300);
+    --input-border-colour: var(--grey-600);
+
+    --modal-bg:            var(--grey-850);
+    --modal-border-colour: var(--grey-700);
+
+    --close-colour:        var(--grey-400);
+    --close-shadow:        none;
+  }
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
 body {
   margin-top: 75px;
   height: 100%;
+  background-color: var(--body-bg);
+  color: var(--body-colour);
 }
+
+/* Anchor scroll-offset for the fixed navbar */
 *[id]:before {
   display: block;
   content: " ";
@@ -9,22 +160,213 @@ body {
   height: 75px;
   visibility: hidden;
 }
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
 .navbar-inverse {
-  background-image: -webkit-linear-gradient(top,#3c3c3c 0,#222 100%);
-  background-image: -o-linear-gradient(top,#3c3c3c 0,#222 100%);
-  background-image: -webkit-gradient(linear,left top,left bottom,from(#3c3c3c),to(#222));
-  background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+  background-image: -webkit-linear-gradient(top, #3c3c3c 0, #222 100%);
+  background-image: -o-linear-gradient(top, #3c3c3c 0, #222 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3c3c3c), to(#222));
+  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3c3c3c', endColorstr='#ff222222', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
 }
-.container table,.container tr, .container th,.container td {
-  border-style: solid;
-  border-width: 1px;
-  padding: 0 3px;
-}
+
 @media (min-width: 768px) {
   .navbar-nav.navbar-right:last-child {
     margin-right: 0;
   }
+}
+
+/* ==========================================================================
+   Typography and links
+   ========================================================================== */
+
+a {
+  color: var(--link-colour);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover-colour);
+}
+
+.text-muted {
+  color: var(--text-muted-colour);
+}
+
+hr {
+  border-top-color: var(--hr-border-colour);
+}
+
+blockquote {
+  border-left-color: var(--blockquote-border-colour);
+}
+
+mark,
+.mark {
+  background-color: var(--mark-bg);
+  color: var(--mark-colour);
+}
+
+/* ==========================================================================
+   Page header
+   ========================================================================== */
+
+.page-header {
+  border-bottom-color: var(--page-header-border-colour);
+}
+
+/* ==========================================================================
+   Code, preformatted text, and keyboard input
+   ========================================================================== */
+
+code {
+  background-color: var(--code-bg);
+  color: var(--code-colour);
+}
+
+pre {
+  background-color: var(--pre-bg);
+  color: var(--pre-colour);
+  border-color: var(--pre-border-colour);
+}
+
+kbd {
+  background-color: var(--kbd-bg);
+  color: var(--kbd-colour);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+.container table,
+.container tr,
+.container th,
+.container td {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--table-border-colour);
+  padding: 0 3px;
+}
+
+.table > thead > tr > th {
+  border-bottom-color: var(--table-border-colour);
+}
+
+.table-bordered,
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > th,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > tfoot > tr > td {
+  border-color: var(--table-border-colour);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: var(--subtle-bg);
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: var(--subtle-bg);
+}
+
+/* ==========================================================================
+   Dropdowns
+   ========================================================================== */
+
+.dropdown-menu {
+  background-color: var(--dropdown-bg);
+  border-color: var(--dropdown-border-colour);
+}
+
+.dropdown-menu > li > a {
+  color: var(--dropdown-link-colour);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: var(--dropdown-link-hover-bg);
+  color: var(--dropdown-link-colour);
+}
+
+.dropdown-menu .divider {
+  background-color: var(--dropdown-divider-colour);
+}
+
+/* ==========================================================================
+   Panels
+   ========================================================================== */
+
+.panel {
+  background-color: var(--panel-bg);
+  border-color: var(--panel-border-colour);
+}
+
+.panel-default > .panel-heading {
+  background-color: var(--panel-heading-bg);
+  border-color: var(--panel-border-colour);
+  color: var(--body-colour);
+}
+
+.panel-default > .panel-footer {
+  background-color: var(--panel-heading-bg);
+  border-color: var(--panel-border-colour);
+}
+
+/* ==========================================================================
+   Wells
+   ========================================================================== */
+
+.well {
+  background-color: var(--well-bg);
+  border-color: var(--well-border-colour);
+}
+
+/* ==========================================================================
+   List groups
+   ========================================================================== */
+
+.list-group-item {
+  background-color: var(--list-group-bg);
+  border-color: var(--list-group-border-colour);
+  color: var(--body-colour);
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+.form-control {
+  background-color: var(--input-bg);
+  color: var(--input-colour);
+  border-color: var(--input-border-colour);
+}
+
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+
+.modal-content {
+  background-color: var(--modal-bg);
+  border-color: var(--modal-border-colour);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border-colour);
+}
+
+/* ==========================================================================
+   Close button
+   ========================================================================== */
+
+.close {
+  color: var(--close-colour);
+  text-shadow: var(--close-shadow);
 }
