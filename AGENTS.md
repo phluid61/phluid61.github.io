@@ -74,47 +74,17 @@ all inherited.
 
 ## Colour scheme (light / dark mode)
 
-`site.css` uses CSS custom properties (variables) to support automatic
-light/dark theming via `@media (prefers-color-scheme: dark)`. The browser
-switches modes based on the user's OS or browser setting — no JavaScript is
-required.
+`site.css` uses CSS custom properties to support automatic light/dark
+theming via `@media (prefers-color-scheme: dark)`. Palette variables
+(e.g. `--grey-800`) define raw colours; semantic variables (e.g.
+`--body-bg`, `--link-colour`) map them to UI roles. The dark-mode media
+query overrides only the semantic layer, so a single set of style rules
+covers both schemes. Light-mode defaults match Bootstrap 3's own values.
 
-### How it works
-
-- **Palette variables** (e.g. `--grey-800`, `--blue-400`) define raw colour
-  values. These do not change between modes.
-- **Semantic variables** (e.g. `--body-bg`, `--link-colour`,
-  `--code-bg`) map palette values to UI roles. The dark-mode media query
-  overrides only these semantic variables.
-- **Style rules** reference semantic variables, so a single set of rules
-  supports both schemes.
-- `color-scheme: light dark` (CSS) and
-  `<meta name="color-scheme" content="light dark">` (HTML) tell the browser
-  to render native controls (scrollbars, form widgets) in the appropriate
-  mode.
-
-### Light-mode defaults
-
-The semantic variables default to Bootstrap 3's own colour values, so the
-light-mode appearance is unchanged from the original theme.
-
-### Covered components
-
-The variables and overrides cover: body, links, typography, page header,
-code/pre/kbd, tables, dropdowns, panels, wells, list groups, forms, modals,
-and the close button. The `.navbar-inverse` is already dark-themed and
-requires no per-mode changes.
-
-### Child repo considerations
-
-- Child repos inherit the dark-mode support automatically through the
-  remote theme.
-- If a child page injects hard-coded light-background colours via
-  `extra_head` or inline styles, those will need per-page dark-mode
-  overrides.
-- Prefer using the semantic variables from `site.css` when adding custom
-  styles (e.g. `background-color: var(--body-bg)`) so they adapt
-  automatically.
+Child repos inherit dark-mode support automatically. When adding custom
+styles, prefer the semantic variables (e.g. `background-color:
+var(--body-bg)`) so they adapt to both schemes. Hard-coded colours in
+`extra_head` or inline styles will need per-page dark-mode overrides.
 
 ## Guidelines
 
