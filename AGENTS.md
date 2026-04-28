@@ -93,5 +93,7 @@ var(--body-bg)`) so they adapt to both schemes. Hard-coded colours in
 - There is no custom CI. GitHub Pages runs Jekyll automatically on push to
   `master`.
 - Keep markup consistent with the existing Bootstrap 3 conventions.
-- When updating the navbar, edit `_data/navigation.yml` — the change
-  propagates to all child repos automatically.
+- When updating the navbar, edit `_data/navigation.yml`. Note that child
+  repos each maintain their own copy of `_data/navigation.yml` on their
+  `gh-pages` branches — Jekyll remote themes do not propagate `_data`
+  files, so each child repo must be updated independently.
